@@ -1,6 +1,8 @@
 import java.util.ArrayList;
 import java.util.List;
 import java.lang.Integer;
+import java.util.Scanner;
+
 public class Cart {
     List<Product> cartItems=new ArrayList<Product>();
     List<Product> userItems=new ArrayList<Product>();
@@ -53,5 +55,17 @@ public class Cart {
         for (Product prod: cartItems) {
             System.out.println(prod.getName()+" "+prod.getStock()+" ");
         }
+    }
+
+    void addAdminObject() {
+
+        Scanner sc = new Scanner(System.in);
+        Product s=new Product(cartItems.size()+1,sc.next(),sc.nextDouble(),sc.nextInt());
+        cartItems.add(s);
+
+    }
+
+    void removeAdminObject(Integer pid) {
+        cartItems.remove(pid);
     }
 }

@@ -23,6 +23,7 @@ public class UI {
     public void startScreen () {
         System.out.println("1. Display Store Products");
         System.out.println("2. Display Cart");
+        System.out.println("3. Add other object");
         System.out.println("0. Exit");
     }
 
@@ -62,6 +63,7 @@ public class UI {
                     break;
 
                 }
+
                 case 0:
                 {
                     System.exit(0);
@@ -78,7 +80,7 @@ public class UI {
 
             switch (ch) {
                 case 1:
-                {displayStoreProducts();
+                {   displayStoreProducts();
                     storeProductsMenu();
                     getUserInput();
                     innerChoice1();
@@ -89,6 +91,11 @@ public class UI {
                 case 0:
                 {System.exit(0);
                     break;}
+                case 3:
+                {
+                    cart.addAdminObject();
+                    break;
+                }
                 default:
 
                     break;
@@ -103,7 +110,8 @@ public class UI {
                 showCart();
                 break;}
             case 2:
-            {removeProductFromCart();
+            {//removeProductFromCart();
+                removeAdminObj();
                 displayStoreProducts();
                 break;}
             default:
@@ -131,16 +139,16 @@ public class UI {
     }
 
     private void displayStoreProducts() {
-        List<Product> products = new Products().getProducts();
-        for (Product prod: products) {
-            System.out.println(
-                    prod.getPid() + "- " +
-                            prod.getName() + " " +
-                            prod.getPrice() + " " +
-                            prod.getStock()
-            );
+
+        for (Product i: cart.cartItems)
+        {
+            System.out.println( i.getPid() + "- " +
+                    i.getName() + " " +
+                    i.getPrice() + " " +
+                    i.getStock());
         }
     }
+
 
     private void addProductToCart() {
         int pid = getUserInput();
@@ -164,4 +172,11 @@ public class UI {
         int pid = getUserInput();
         cart.removeProductByPID(pid);
     }
+
+    private void removeAdminObj(){
+        int pid = getUserInput();
+        cart.removeAdminObject(pid);
+    }
+
+
 }

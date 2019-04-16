@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Products {
 
-    private final List<Product> products = new ArrayList<Product>();
+    private List<Product> products = new ArrayList<Product>();
 
     public Products()
     {
@@ -27,14 +27,6 @@ public class Products {
         count=productNames.length;
     }
 
-    public void addOtherOject() {
-        Scanner in = new Scanner(System.in);
-        String productName = in.next();
-        Double productPrice = in.nextDouble();
-        Integer stock = in.nextInt();
-        this.products.add(new Product(count+1,productName,productPrice, stock));
-
-    }
 
 
 }
